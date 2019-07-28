@@ -15,16 +15,26 @@ public class App {
 
 		session.beginTransaction();
 
-		Course course = new Course("Spring Tuts");
-
+		
+		// Save Course and Reviews
+		/*- Course course = new Course("Spring Tuts");
 		Review review1 = new Review("Awesome Spring tuts");
 		Review review2 = new Review("Not good Spring tuts");
 
 		course.addReview(review1);
 		course.addReview(review2);
 		System.out.println(course.getReviews());
-
-		session.save(course);
+		session.save(course);*/
+		
+		// get Course and Reviews
+		/*- Course course = session.get(Course.class, 18);
+		System.out.println(course);
+		System.out.println("Reviews: "+course.getReviews());*/
+		
+		
+		// Delete Course (Check Reviews are also cascade deleted)
+		Course course = session.get(Course.class, 18);
+		session.delete(course);
 		
 		session.getTransaction().commit();
 
